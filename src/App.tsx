@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import Hello from './components/Hello';
+import Dashboard from './containers/Dashboard';
 
 import logo from './logo.svg';
 
@@ -16,6 +17,7 @@ class App extends React.Component {
         <p className="App-intro">
           To get started, edit <code>src/App.tsx</code> and save to reload.
         </p>
+          <Dashboard name={'somename'}/>
       </div>
     );
   }
