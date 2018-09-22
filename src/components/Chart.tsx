@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import {
     ScatterChart,
-    // CartesianGrid,
+    CartesianGrid,
     YAxis,
     XAxis,
     ZAxis,
@@ -23,6 +23,10 @@ const data = [
     { x: 2018, y: 980, z: 2000 }
 ]
 
+const BigBubble = (props: any) => {
+    return <circle cx={props.cx} cy={props.cy} r={25} stroke="black" strokeWidth={3} fill="red" />
+}
+
 function Chart() {
     return (
         <React.Fragment>
@@ -30,13 +34,13 @@ function Chart() {
                 width={730}
                 height={250}
                 margin={{ top: 20, right: 20, bottom: 10, left: 10 }}>
-                {/* <CartesianGrid strokeDasharray="3 3" /> */}
+                <CartesianGrid vertical={false}  />
                 <XAxis dataKey="x" name="stature" unit="" />
                 <YAxis dataKey="y" name="weight" unit="" />
                 <ZAxis dataKey="z" range={[64, 144]} name="score" unit="" />
-                <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+                <Tooltip active={true} cursor={{ strokeDasharray: '3 3' }} />
                 <Legend />
-                <Scatter width={200} height={200} strokeWidth={200} name="A school" data={data} fill="#8884d8" />
+                <Scatter shape={<BigBubble />} width={200} height={200} strokeWidth={200} name="A school" data={data} fill="#8884d8" />
                 {/* <Scatter name="B school" data={data02} fill="#82ca9d" /> */}
             </ScatterChart>
         </React.Fragment>
