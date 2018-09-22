@@ -1,41 +1,45 @@
-// import * as React from 'react';
+    import * as React from 'react';
 
-// import { Radio } from 'antd';
+    import { Radio } from 'antd';
+    // import { data } from '../helpers';
 
-// export interface IProps {
-//     year?: number;
-//     onChange?: any;
-// }
+    export interface IProps {
+        activeMonth?: string;
+        activeYear?: number;
+        onChange?: any;
+    }
 
-// interface IState {
-//     currentEnthusiasm: number;
-// }
+    interface IState {
+        // currentEnthusiasm: number;
+    }
 
-// class YearSlider extends React.Component<IProps, IState> {
-//     // constructor(props: IProps) {
-//     //     super(props);
-//     //     this.state = {
-//     //         currentYear: props.year || 2018
-//     //     };
-//     // }
-//     onChange = (value: any) => {
-//         this.props.onChange(value);
-//     }
+    class MonthPicker extends React.Component<IProps, IState> {
+        // constructor(props: IProps) {
+        //     super(props);
+        //     this.state = {
+        //         currentYear: props.year || 2018
+        //     };
+        // }
 
-//     getMonths() {
+        onChange = (ev: any) => {
+            console.log(ev.target.value);
+            // this.props.onChange(ev.target.value);
+        }
 
-//     }
+        getMonths(): JSX.Element[] {
+            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            return months.map((month: any, i: number) => {
+                return <Radio.Button key={i} value={`${month}-${this.props.activeYear}`}>{month}</Radio.Button>
+            })
+        }
 
-//     public render() {
-//         return (
-//             <Radio.Group value={1} onChange={this.onChange}>
-//                 {/* {this.getMonths()} */}
-//                 <Radio.Button value="large">January</Radio.Button>
-//                 <Radio.Button value="default">February</Radio.Button>
-//                 <Radio.Button value="small">March</Radio.Button>
-//             </Radio.Group>
-//         );
-//     }
-// }
+        public render() {
+            return (
+                <Radio.Group value={this.props.activeMonth} onChange={this.onChange}>
+                    {this.getMonths()}
+                </Radio.Group>
+            );
+        }
+    }
 
-// export default YearSlider;
+    export default MonthPicker;
