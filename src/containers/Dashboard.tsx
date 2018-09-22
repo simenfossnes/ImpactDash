@@ -3,7 +3,7 @@ import * as React from 'react';
 // import Main from '../components/Main/Main';
 // import YearSlider from '../components/YearSlider';
 // import MonthPicker from '../components/MonthPicker';
-// import Chart from '../components/Chart';
+import Chart from '../components/Chart';
 // import Upload from '../components/Upload';
 // import EventTree from '../components/EventTree';
 
@@ -92,7 +92,9 @@ class Dashboard extends React.Component<IProps, IState> {
                                 </div>
                             </div>
                         </div>
-                        <div className="viz-main__main__main"></div>
+                        <div className="viz-main__main__main">
+                            <Chart />
+                        </div>
                     </div>
                 </div>
                 <div className="viz-footer">
@@ -114,7 +116,7 @@ class Dashboard extends React.Component<IProps, IState> {
 {/*<h1>Dashboard</h1>*/}
 {/*<h3>Year: {this.state.activeYear}</h3>*/}
 {/*<YearSlider year={this.state.activeYear} onChange={this.onYearSliderChange}/>*/}
-{/*<Chart />*/}
+
 {/*/!* <MonthPicker activeMonth={'September'} activeYear={this.state.activeYear} onChange={this.onMonthChange} /> *!/*/}
 {/*/!* <Upload onFileUpload={this.onFileUpload}/> *!/*/}
 {/*/!* {this.state.file && <EventTree data={this.state.file}/>} *!/*/}

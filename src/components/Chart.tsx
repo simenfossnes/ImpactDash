@@ -22,17 +22,20 @@ const data = [
     { x: 2017, y: 880, z: 2000 },
     { x: 2018, y: 980, z: 2000 }
 ]
+const onBigBubbleClick = (props: any) => {
+    console.log(props);
+}
 
 const BigBubble = (props: any) => {
-    return <circle cx={props.cx} cy={props.cy} r={25} stroke="black" strokeWidth={3} fill="red" />
+    return <circle onClick={() => onBigBubbleClick(props)} cx={props.cx} cy={props.cy} r={15} fill="#50e3c2" />
 }
 
 function Chart() {
     return (
         <React.Fragment>
             <ScatterChart
-                width={730}
-                height={250}
+                width={800}
+                height={400}
                 margin={{ top: 20, right: 20, bottom: 10, left: 10 }}>
                 <CartesianGrid vertical={false}  />
                 <XAxis dataKey="x" name="stature" unit="" />
