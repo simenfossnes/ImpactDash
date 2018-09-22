@@ -1,6 +1,7 @@
 import * as React from 'react';
 import history from '../../history';
 import {Menu, Icon} from 'antd';
+import EventSlider from '../EventSlider'
 
 // import logo from '../../assets/logo.svg';
 import './Main.css';
@@ -78,6 +79,19 @@ class Main extends React.Component {
                 <div className="main__content">
                     <div className="container">
                         {this.props.children}
+                    </div>
+                </div>
+
+                <div className="footer">
+                    <div className="footer__slider">
+                        <div style={{width: '100%'}}>
+                            <EventSlider year={1} onChange={(event: any) => console.log(event)} />
+                        </div>
+                    </div>
+                    <div className="footer__add-event">
+                        <div className="circle-button">
+                            <div className="circle-button__text">+</div>
+                        </div>
                     </div>
                 </div>
             </div>
