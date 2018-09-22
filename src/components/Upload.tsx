@@ -13,6 +13,25 @@ interface IState {
 }
 
 class Upload extends React.Component<IProps, IState> {
+    csvJSON(csv: any): any {
+        var lines = csv.split("\n");
+        var result = [];
+        var headers = lines[0].split(",");
+
+        for (var i = 1; i < lines.length; i++) {
+            var obj = {};
+            var currentline = lines[i].split(",");
+
+            for (var j = 0; j < headers.length; j++) {
+                obj[headers[j]] = currentline[j];
+            }
+
+            result.push(obj);
+        }
+
+        //return result; //JavaScript object
+        return JSON.stringify(result); //JSON
+    }
     onChange = (info: UploadChangeParam) => {
         if (info.file.status !== 'uploading') {
             // console.log(info.file, info.fileList);
@@ -29,12 +48,15 @@ class Upload extends React.Component<IProps, IState> {
         var reader = new FileReader();
         reader.readAsText(file);
         reader.onload = this.onUploaded;
+        console.log(reader);
 
-            return true;
+        return true;
     }
 
     onUploaded = (event: any) => {
-        console.log(event.currentTarget.result);
+        const fileJSON = this.csvJSON(event.currentTarget.result);
+
+        console.log(fileJSON);
     }
 
     public render() {
