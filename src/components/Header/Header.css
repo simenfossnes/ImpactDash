@@ -1,0 +1,35 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222;
+    height: 30px;
+    padding: 20px;
+    color: white;
+}
+
+.header__section {
+    display: flex;
+}
+
+.header__menu-item {
+    width: 100px;
+}
+
+.header__logo {
+    animation: header-logo-spin infinite 20s linear;
+    height: 20px;
+}
+
+.header__menu {
+    display: flex;
+}
+
+.header__user {
+
+}
+
+@keyframes header-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
