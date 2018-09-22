@@ -5,7 +5,6 @@ import Dashboard from './containers/Dashboard';
 import { BrowserRouter } from 'react-router-dom';
 import { Switch, Route } from 'react-router-dom';
 
-
 class App extends React.Component {
   public render() {
     return (

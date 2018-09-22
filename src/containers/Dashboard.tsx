@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import Main from '../components/Main/Main';
+
 export interface IProps {
     name: string;
     sliderValue?: number;
@@ -39,12 +41,14 @@ class Dashboard extends React.Component<IProps, IState> {
         const { data, sliderValue } = this.state;
 
         return (
-            <div className="hello">
-                <h1>Dashboard</h1>
-                <h3>Data based on slider value:</h3>
-                <h4>{data[sliderValue].someDataSet.someValue}</h4>
-                <input type="range" min={1} max={3} value={sliderValue} onChange={this.setSliderValue}/>
-            </div>
+            <Main>
+                <div className="hello">
+                    <h1>Dashboard</h1>
+                    <h3>Data based on slider value:</h3>
+                    <h4>{data[sliderValue].someDataSet.someValue}</h4>
+                    <input type="range" min={1} max={3} value={sliderValue} onChange={this.setSliderValue}/>
+                </div>
+            </Main>
         );
     }
 
