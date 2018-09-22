@@ -1,5 +1,3 @@
-// src/components/StatefulHello.tsx
-
 import * as React from 'react';
 
 export interface IProps {
