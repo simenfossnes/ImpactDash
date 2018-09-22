@@ -4,8 +4,15 @@ import App from './App';
 import './modern-normalize.css';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
+import configureStore from './store/configureStore';
+import { Provider } from 'react-redux';
 
-ReactDOM.render(<App/>,
+const store = configureStore();
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App/>
+    </Provider>,
   document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();
