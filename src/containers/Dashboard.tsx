@@ -2,8 +2,11 @@ import * as React from 'react';
 
 import Main from '../components/Main/Main';
 import YearSlider from '../components/YearSlider';
-import MonthPicker from '../components/MonthPicker';
-import Upload from '../components/Upload';
+// import MonthPicker from '../components/MonthPicker';
+import Chart from '../components/Chart';
+// import Upload from '../components/Upload';
+// import EventTree from '../components/EventTree';
+
 
 export interface IProps {
     name: string;
@@ -13,6 +16,7 @@ export interface IProps {
 interface IState {
     activeYear: number;
     activeMonth: string;
+    file: any | undefined;
 }
 
 class Dashboard extends React.Component<IProps, IState> {
@@ -21,6 +25,7 @@ class Dashboard extends React.Component<IProps, IState> {
         this.state = {
             activeYear: 2018,
             activeMonth: 'October',
+            file: undefined
         };
     }
 
@@ -32,15 +37,25 @@ class Dashboard extends React.Component<IProps, IState> {
         console.log(month);
     }
 
+    onFileUpload = (file: any) => {
+
+        this.setState({
+            file
+        });
+    }
+
     public render() {
+        console.log(this.state.file);
         return (
             <Main>
                 <div className="hello">
                     <h1>Dashboard</h1>
                     <h3>Year: {this.state.activeYear}</h3>
                     <YearSlider year={this.state.activeYear} onChange={this.onYearSliderChange}/>
-                    <MonthPicker activeMonth={'September'} activeYear={this.state.activeYear} onChange={this.onMonthChange} />
-                    <Upload />
+                    <Chart />
+                    {/* <MonthPicker activeMonth={'September'} activeYear={this.state.activeYear} onChange={this.onMonthChange} /> */}
+                    {/* <Upload onFileUpload={this.onFileUpload}/> */}
+                    {/* {this.state.file && <EventTree data={this.state.file}/>} */}
                 </div>
             </Main>
         );
