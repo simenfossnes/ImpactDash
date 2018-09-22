@@ -5,8 +5,6 @@ import Hello from '../components/Hello';
 import Main from '../components/Main/Main';
 // import Chart from '../components/Chart';
 
-import './App.css';
-
 class Home extends React.Component {
     public render() {
         return (

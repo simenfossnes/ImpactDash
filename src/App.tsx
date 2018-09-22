@@ -1,10 +1,10 @@
 import * as React from 'react';
-import './containers/App.css';
 import Home from './containers/Home';
 import Dashboard from './containers/Dashboard';
 import { Router } from 'react-router-dom';
 import { Switch, Route } from 'react-router-dom';
 import history from './history';
+import './App.css';
 
 class App extends React.Component {
   public render() {
