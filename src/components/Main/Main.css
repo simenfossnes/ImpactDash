@@ -3,27 +3,49 @@
   flex-direction: column;
   min-height: 100vh;
 }
-.header__logo {
-  animation: spin infinite 20s linear;
-  height: 30px;
+
+.main__header {
+  display: flex;
+  align-items: center;
 }
 
 .header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.header__section {
   display: flex;
   align-items: center;
-  background-color: #222;
-  color: white;
 }
 
-.header__title {
-  font-size: 1.5em;
+.header__brand {
+  display: flex;
+  align-items: center;
+
 }
 
-.container {
+.brand__icon {
+  display: flex;
+  margin-right: 10px;
+}
+
+.brand__text {
+  font-weight: bold;
+}
+
+.main__footer {
+
+}
+
+.main__content {
   padding: 20px 50px;
 }
 
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.ant-menu-horizontal {
+  border-bottom: none;
 }

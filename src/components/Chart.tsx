@@ -15,7 +15,7 @@ const data = [
 function Chart() {
     return (
         <React.Fragment>
-            <BarChart width={150} height={40} data={data}>
+            <BarChart width={300} height={150} data={data}>
                 <Bar dataKey='uv' fill='#8884d8' />
             </BarChart>
         </React.Fragment>
@@ -23,4 +23,3 @@ function Chart() {
 }
 
 export default Chart;
-
