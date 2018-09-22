@@ -27,7 +27,7 @@ const onBigBubbleClick = (props: any) => {
 }
 
 const BigBubble = (props: any) => {
-    return <circle onClick={() => onBigBubbleClick(props)} cx={props.cx} cy={props.cy} r={15} fill="#50e3c2" />
+    return <circle onClick={() => onBigBubbleClick(props)} cx={props.cx} cy={props.cy} r={15} fill="#7d5fff" />
 }
 
 function Chart() {
@@ -43,7 +43,7 @@ function Chart() {
                 <ZAxis dataKey="z" range={[64, 144]} name="score" unit="" />
                 <Tooltip active={true} cursor={{ strokeDasharray: '3 3' }} />
                 <Legend />
-                <Scatter shape={<BigBubble />} width={200} height={200} strokeWidth={200} name="A school" data={data} fill="#8884d8" />
+                <Scatter shape={<BigBubble />} width={200} height={200} strokeWidth={200} data={data} fill="#8884d8" />
                 {/* <Scatter name="B school" data={data02} fill="#82ca9d" /> */}
             </ScatterChart>
         </React.Fragment>

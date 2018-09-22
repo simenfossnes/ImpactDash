@@ -258,7 +258,7 @@ h1, h2, h3 {
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-    background-image: linear-gradient(40deg, #9575f4, #7858d5);
+    background-image: linear-gradient(40deg, #4ecdc4, #6a8090);
     opacity: 1;
 }
 
@@ -282,13 +282,14 @@ h1, h2, h3 {
 }
 
 .viz-main__main__sidebar {
+    background: white;
     display: block;
     width: 24vw;
     min-width: 30vh;
 }
 
 .viz__org-logo {
-    width: 8vw;
+    padding: 15px;
 }
 
 .viz-header {
@@ -350,11 +351,9 @@ h1, h2, h3 {
 }
 
 .div-block {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
+    padding-top: 20px;
     display: flex;
-    background-color: #50e3c2;
+    background-color: white;
 }
 
 .heading-2 {
@@ -366,21 +365,8 @@ h1, h2, h3 {
 }
 
 .div-block-2 {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
     align-items: center;
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-    -ms-flex: 1;
     flex: 1;
 }
 
@@ -389,7 +375,7 @@ h1, h2, h3 {
 }
 
 .text-block-2 {
-    color: #fff;
+    color: #52c1bc;
     font-size: 10px;
     font-weight: 700;
     text-align: left;
@@ -400,20 +386,20 @@ h1, h2, h3 {
 .div-block-3 {
     padding-top: 20px;
     padding-bottom: 0px;
-    padding-left: 40px;
 }
 
 .heading-3 {
     margin-top: 0px;
-    color: #50e3c2;
-    font-size: 32px;
+    /* color: white; */
+    font-size: 26px;
     font-weight: 300;
 }
 
 .div-block-4 {
+    background-color: white;
     padding-top: 20px;
     padding-bottom: 20px;
-    padding-left: 40px;
+    padding-left: 20px;
 }
 
 @media (max-width: 991px) {

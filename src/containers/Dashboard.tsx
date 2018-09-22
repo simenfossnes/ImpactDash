@@ -57,7 +57,7 @@ class Dashboard extends React.Component<IProps, IState> {
                     <div className="viz-main__main">
                         <div className="viz-main__main__sidebar">
                             <div className="div-block">
-                                <div className="viz__org-logo"><img style={{width: '8vw', height: '8vw'}} src="https://pbs.twimg.com/profile_images/970734354023501824/u4_BhEEW_400x400.jpg"/></div>
+                                <div className="viz__org-logo"><img style={{width: '60px', height: '60px'}} src="https://pbs.twimg.com/profile_images/970734354023501824/u4_BhEEW_400x400.jpg"/></div>
                                 <div className="div-block-2">
                                     <div>
                                         <div className="text-block-2">organization</div>
