@@ -3,7 +3,6 @@ import history from '../../history';
 import {Menu, Icon} from 'antd';
 import EventSlider from '../EventSlider'
 
-// import logo from '../../assets/logo.svg';
 import './Main.css';
 
 const SubMenu = Menu.SubMenu;
@@ -42,8 +41,6 @@ class Main extends React.Component {
                         </div>
                         <div className="header__section">
                             <Menu
-                                // onClick={this.handleClick}
-                                // selectedKeys={[this.state.current]}
                                 mode="horizontal"
                             >
                                 <Menu.Item key="home" onClick={this.navigateToHome}>

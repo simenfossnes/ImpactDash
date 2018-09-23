@@ -1,5 +1,14 @@
 @import '~antd/dist/antd.css';
 
+.landing {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(40deg, #4ecdc4, #6a8090);
+}
 .main {
     display: -webkit-box;
     display: -webkit-flex;
@@ -277,6 +286,7 @@ h1, h2, h3 {
 
 .big-bubble {
     /* r: 5; */
+    cursor: pointer;
     fill: #FFC923;
     transition: all ease .2s;
 }
@@ -298,9 +308,13 @@ h1, h2, h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 21px;
     color: #353846;
+    cursor: pointer;
 }
+.logo__icon {
+    margin-right: 10px;
+}
+
 .logo-bold {
     font-weight: bold;
 }
@@ -461,10 +475,6 @@ h1, h2, h3 {
     .text-block {
         font-size: 17px;
     }
-}
-
-.brand__icon {
-    margin-right: 10px;
 }
 
 @media (max-width: 767px) {

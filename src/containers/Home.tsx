@@ -1,18 +1,23 @@
 import * as React from 'react';
-import { Button } from 'antd';
 
-import Hello from '../components/Hello';
-import Main from '../components/Main/Main';
-// import Chart from '../components/Chart';
+import BrandLogo from '../components/BrandLogo';
+import history from '../history';
 
 class Home extends React.Component {
+    navigateToDashboard = () => {
+        this.navigateTo('dashboard');
+    };
+
+    navigateTo = (uri: string) => {
+        history.push(`/${uri}`)
+    };
+
     public render() {
         return (
-            <Main>
-                {/* <Chart /> */}
-                <Button type="primary">Hello button!</Button>
-                <Hello name="Simon" enthusiasmLevel={1} />
-            </Main>
+            <div className="landing">
+                <BrandLogo onClick={this.navigateToDashboard} big={true}/>
+                {/* <h4 onClick={this.navigateToDashboard}>Dashboard</h4> */}
+            </div>
         );
     }
 }
