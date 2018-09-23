@@ -106,8 +106,8 @@ class Dashboard extends React.Component<IProps, IState> {
         });
     }
 
-    navigateToDashboard = () => {
-        this.navigateTo('dashboard');
+    navigateToHome = () => {
+        this.navigateTo('');
     };
 
     navigateTo = (uri: string) => {
@@ -120,7 +120,7 @@ class Dashboard extends React.Component<IProps, IState> {
                 <div className="viz-header">
                     <div className="viz-header__left"></div>
                     <div className="viz-header__middle">
-                        <BrandLogo onClick={this.navigateToDashboard} />
+                        <BrandLogo onClick={this.navigateToHome} />
                     </div>
                     <div className="viz-header__right"></div>
                 </div>
@@ -139,6 +139,7 @@ class Dashboard extends React.Component<IProps, IState> {
                             {this.getInfoBlock()}
                         </div>
                         <div className="viz-main__main__main">
+                            <h3 className="chart-title">History and <b>impact</b> of <span className="text-yellow">Garage 48</span> events</h3>
                             <Chart onBubbleClick={this.onBubbleClick} onSliderChange={this.onSliderChange}/>
                         </div>
                     </div>

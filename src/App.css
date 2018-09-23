@@ -194,7 +194,52 @@ h1, h2, h3 {
     fill: #FFC923;
     transition: all ease .2s;
 }
-
+.chart-title {
+    color: white;
+    /* font-weight: bold; */
+    /* font-size: 18px; */
+    margin-bottom: 30px;
+}
+.quote {
+    margin-top: 80px;
+    align-items: center;
+    color: white;
+}
+.quote__message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    width: 400px;
+    height: 150px;
+    background: #353846;
+    padding: 20px 30px;
+    border-radius: 20px;
+    box-shadow: 6px 10px 30px #484642ab;
+}
+.quotemark {
+    position: absolute;
+    font-size: 40px;
+    line-height: 1;
+}
+.quotemark--top {
+    top: 8px;
+    left: 15px;
+}
+.quotemark--bottom {
+    bottom: -5px;
+    right: 15px;
+}
+.quoter {
+    margin-top: 15px;
+    text-align: right;
+    font-weight: bold;
+    /* font-size: 22px; */
+    color: #353846
+}
+.text-yellow {
+    color: #FFC923;
+}
 .big-bubble:hover, .big-bubble.is-active {
     r: 20;
 }

@@ -16,7 +16,16 @@ class Home extends React.Component {
         return (
             <div className="landing">
                 <BrandLogo onClick={this.navigateToDashboard} big={true}/>
-                {/* <h4 onClick={this.navigateToDashboard}>Dashboard</h4> */}
+                <div className="quote">
+                    <div className="quote__message">
+                        <span className="quotemark quotemark--top text-yellow">“</span>
+                            ImpactDash is a bullseye product in light of the next week’s “3S: Manage for Impact Conference”. <br /> I am very interested to have a closer look now!
+                        <span className="quotemark quotemark--bottom text-yellow">”</span>
+                    </div>
+                    <div className="quoter">
+                        <span className="text-yellow">Håkon Iversen</span> - SoCentral, Norway
+                    </div>
+                </div>
             </div>
         );
     }
