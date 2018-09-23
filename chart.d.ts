@@ -12,3 +12,7 @@
 //     export const CartesianGrid: any
 //     export const ResponsiveContainer: any
 // }
+declare module "*.json" {
+    const value: any;
+    export default value;
+}

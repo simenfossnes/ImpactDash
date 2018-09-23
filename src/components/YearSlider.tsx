@@ -3,8 +3,10 @@ import * as React from 'react';
 import { Slider } from 'antd';
 
 export interface IProps {
-    year: number;
-    onChange: any;
+    year?: number;
+    max?: number;
+    min?: number;
+    onChange?: any;
 }
 
 interface IState {
@@ -24,7 +26,7 @@ class YearSlider extends React.Component<IProps, IState> {
 
     public render() {
         return (
-            <Slider onChange={this.onChange} defaultValue={this.props.year} min={2011} max={2018}/>
+            <Slider onChange={this.onChange} defaultValue={1} min={this.props.min} max={this.props.max}/>
         );
     }
 }

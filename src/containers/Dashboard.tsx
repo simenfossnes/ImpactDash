@@ -7,6 +7,8 @@ import Chart from '../components/Chart';
 // import Upload from '../components/Upload';
 // import EventTree from '../components/EventTree';
 
+import * as data from '../data.json';
+
 
 export interface IProps {
     name: string;
@@ -45,7 +47,7 @@ class Dashboard extends React.Component<IProps, IState> {
     }
 
     public render() {
-        console.log(this.state.file);
+        console.log(typeof data);
         return (
             <div>
                 <div className="viz-header">
