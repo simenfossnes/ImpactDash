@@ -6,8 +6,10 @@ import * as React from 'react';
 import Chart from '../components/Chart';
 // import Upload from '../components/Upload';
 // import EventTree from '../components/EventTree';
+import { Icon } from 'antd';
 
-import * as data from '../data.json';
+// import * as data from '../data.json';
+let data = require('../data.json');
 
 
 export interface IProps {
@@ -16,43 +18,115 @@ export interface IProps {
 }
 
 interface IState {
-    activeYear: number;
-    activeMonth: string;
-    file: any | undefined;
+    activeEvent: number;
+    activeEventDetails: number | undefined;
 }
 
 class Dashboard extends React.Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
         this.state = {
-            activeYear: 2018,
-            activeMonth: 'October',
-            file: undefined
+            activeEvent: 1,
+            activeEventDetails: undefined
         };
     }
 
-    onYearSliderChange = (activeYear: number) => {
-        this.setState({activeYear});
+    onSliderChange = (activeEvent: number) => {
+        this.setState({activeEvent, activeEventDetails: undefined});
     }
 
-    onMonthChange = (month: string) => {
-        console.log(month);
+    getTotals(data: any, key: string) {
+        let amount = 0;
+
+        data.forEach((e: any) => {
+            amount += e[key];
+        })
+
+        return amount;
     }
 
-    onFileUpload = (file: any) => {
+    getInfoBlock() {
+        const filteredData = data.filter((e: any) => e['#'] < this.state.activeEvent);
+        if (this.state.activeEventDetails) {
+            const activeDataObj = data.find((e:any) => e['#'] === this.state.activeEventDetails);
+            return (
+                <React.Fragment>
+                    <div className="div-block-3">
+                        <div className="text-block-2">Event Name</div>
+                        <h3 className="heading-3">{activeDataObj['Event'] || '-'}</h3>
+                    </div>
+                    <div className="div-block-3">
+                        <div className="text-block-2">Number of Participants</div>
+                        <h3 className="heading-3">{activeDataObj['Participants']}</h3>
+                    </div>
+                    <div className="div-block-3">
+                        <div className="text-block-2">Teams Graduated</div>
+                        <h3 className="heading-3">{activeDataObj['Teams graduated'] || 0}</h3>
+                    </div>
+                    <div className="div-block-3">
+                        <div className="text-block-2">Pre-Seed</div>
+                        <h3 className="heading-3">{activeDataObj['Pre-seed'] || 0}</h3>
+                    </div>
+                    <div className="div-block-3">
+                        <div className="text-block-2">A-Series</div>
+                        <h3 className="heading-3">{activeDataObj['A-series'] || 0}</h3>
+                    </div>
+                    <div className="div-block-3">
+                        <div className="text-block-2">Exit</div>
+                        <h3 className="heading-3">{activeDataObj['Exit'] || 0}</h3>
+                    </div>
+                </React.Fragment>
+            )
+        } else {
+            return (
+                <React.Fragment>
+                    <div className="div-block-3">
+                        <div className="text-block-2">Total Number of Participants</div>
+                        <h3 className="heading-3">{this.getTotals(filteredData, '#')}</h3>
+                    </div>
+                    <div className="div-block-3">
+                        <div className="text-block-2">Total Teams Graduated</div>
+                        <h3 className="heading-3">{this.getTotals(filteredData, 'Teams graduated')}</h3>
+                    </div>
+                    <div className="div-block-3">
+                        <div className="text-block-2">Total Pre-Seeds</div>
+                        <h3 className="heading-3">{this.getTotals(filteredData, 'Pre-seed')}</h3>
+                    </div>
+                    <div className="div-block-3">
+                        <div className="text-block-2">Total A-Series</div>
+                        <h3 className="heading-3">{this.getTotals(filteredData, 'A-series')}</h3>
+                    </div>
+                    <div className="div-block-3">
+                        <div className="text-block-2">Total Exits</div>
+                        <h3 className="heading-3">{this.getTotals(filteredData, 'Exit')}</h3>
+                    </div>
+                </React.Fragment>
+            )
+        }
+    }
 
+    onBubbleClick = (eventHash: any) => {
+        console.log('dashboard bubble click', eventHash);
         this.setState({
-            file
-        });
+            activeEventDetails: eventHash
+        })
     }
 
     public render() {
-        console.log(typeof data);
         return (
             <div>
                 <div className="viz-header">
                     <div className="viz-header__left"></div>
-                    <div className="viz-header__middle"></div>
+                    <div className="viz-header__middle">
+                        <span className="logo">
+                            <Icon style={{ fontSize: '1.5em', color: '#FFC923' }} className="brand__icon"
+                                type="fund" theme="filled" />
+                            <span className="logo-bold">
+                            Impact
+                            </span>
+                            Dash
+                        </span>
+                    </div>
                     <div className="viz-header__right"></div>
                 </div>
                 <div className="viz-main">
@@ -67,45 +141,15 @@ class Dashboard extends React.Component<IProps, IState> {
                                     </div>
                                 </div>
                             </div>
-                            <div className="div-block-4">
-                                <div className="div-block-3">
-                                    <div className="text-block-2">Event Name</div>
-                                    <h3 className="heading-3">Oslo Innovation Week</h3>
-                                </div>
-                                <div className="div-block-3">
-                                    <div className="text-block-2">Number of Participants</div>
-                                    <h3 className="heading-3">29</h3>
-                                </div>
-                                <div className="div-block-3">
-                                    <div className="text-block-2">Teams Graduated</div>
-                                    <h3 className="heading-3">3</h3>
-                                </div>
-                                <div className="div-block-3">
-                                    <div className="text-block-2">Pre-Seed</div>
-                                    <h3 className="heading-3">12</h3>
-                                </div>
-                                <div className="div-block-3">
-                                    <div className="text-block-2">A-Series</div>
-                                    <h3 className="heading-3">5</h3>
-                                </div>
-                                <div className="div-block-3">
-                                    <div className="text-block-2">Exit</div>
-                                    <h3 className="heading-3">1001</h3>
-                                </div>
-                            </div>
+                            {this.getInfoBlock()}
                         </div>
                         <div className="viz-main__main__main">
-                            <Chart />
+                            <Chart onBubbleClick={this.onBubbleClick} onSliderChange={this.onSliderChange}/>
                         </div>
                     </div>
                 </div>
                 <div className="viz-footer">
-                    <div className="viz-footer__slider"></div>
-                    <div className="viz-footer__add-event">
-                        <div className="viz-circle-button">
-                            <div className="viz-circle-button__text">+</div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
 
@@ -113,16 +157,5 @@ class Dashboard extends React.Component<IProps, IState> {
     }
 }
 
-{/*<Main>*/}
-{/*<div className="hello">*/}
-{/*<h1>Dashboard</h1>*/}
-{/*<h3>Year: {this.state.activeYear}</h3>*/}
-{/*<YearSlider year={this.state.activeYear} onChange={this.onYearSliderChange}/>*/}
-
-{/*/!* <MonthPicker activeMonth={'September'} activeYear={this.state.activeYear} onChange={this.onMonthChange} /> *!/*/}
-{/*/!* <Upload onFileUpload={this.onFileUpload}/> *!/*/}
-{/*/!* {this.state.file && <EventTree data={this.state.file}/>} *!/*/}
-{/*</div>*/}
-{/*</Main>*/}
 
 export default Dashboard;

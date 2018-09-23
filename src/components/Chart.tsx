@@ -5,7 +5,7 @@ import {
     CartesianGrid,
     YAxis,
     XAxis,
-    // ZAxis,
+    ZAxis,
     Tooltip,
     Legend,
     Scatter
@@ -13,7 +13,7 @@ import {
 import YearSlider from '../components/YearSlider';
 // import * as data from '../data.json';
 
-let data = require('../data.json')
+let data = require('../data.json');
 data = data.map((e: any) => {
     e["Start date"] = e["Start date"].split('.')[2];
     return e;
@@ -31,16 +31,43 @@ data = data.map((e: any) => {
 //     { x: 2018, y: 980, z: 2000 }
 // ]
 
-const onBigBubbleClick = (props: any) => {
-    console.log(props);
-}
+// const onBigBubbleClick = (props: any) => {
+//     props.onBigBubbleClick(props);
+// }
 
-const BigBubble = (props: any) => {
-    return <circle className="big-bubble" onClick={() => onBigBubbleClick(props)} cx={props.cx} cy={props.cy} fill="#FFC923" />
+class BigBubble extends React.Component<any, any> {
+    onBigBubbleClick = () => {
+        this.props.onClick(this.props);
+    }
+
+    render() {
+        const classList = ['big-bubble'];
+        let radius = this.props['Teams alive at 6m'] * 4;
+
+        if (radius === 0) radius = 1;
+
+        if (this.props.activeElement === this.props['#']) {
+            classList.push('is-active');
+        }
+
+        if (this.props['Exit'] !== 0) {
+            classList.push('has-exits');
+        }
+
+        if (this.props['A-series'] !== 0 || this.props['Pre-seed'] !== 0) {
+            classList.push('has-seeds');
+        }
+
+        return <circle className={classList.join(' ')} onClick={this.onBigBubbleClick} cx={this.props.cx} cy={this.props.cy} r={this.props['Teams alive at 6m'] * 4} />
+    }
+
+
 }
 
 interface IProps {
     // activeEvent:
+    onBubbleClick?: any;
+    onSliderChange: any;
 }
 
 interface IState {
@@ -59,30 +86,50 @@ class Chart extends React.Component<IProps, IState> {
     onSliderChange = (hash: any) => {
         this.setState({
             activeEvent: hash
+        }, () => {
+            this.props.onSliderChange(this.state.activeEvent);
         });
     }
 
+    onBigBubbleClick = (event: any) => {
+        // console.log(event);
+        // this.setState({
+        //     activeEvent: event['#']
+        // }, () => {
+            this.props.onBubbleClick(event['#']);
+        // })
+    }
+
     render() {
+        let dataLength = data.length;
         let filteredData = data.filter((e: any) => e['#'] < this.state.activeEvent);
+        // debugger;
+        const isActive = filteredData['#'] === this.state.activeEvent;
 
         return (
             <React.Fragment>
-                    <ScatterChart
-                        width={850}
-                        height={400}
-                        margin={{ top: 20, right: 20, bottom: 10, left: 10 }}>
-                        <CartesianGrid vertical={false}  />
-                        <XAxis dataKey="Start date" name="stature" unit="" />
-                        <YAxis dataKey="Participants" name="weight" unit="" />
-                        {/* <ZAxis dataKey="z" range={[64, 144]} name="score" unit="" /> */}
-                        <Tooltip active={true} cursor={{ strokeDasharray: '3 3' }} />
-                        <Legend />
-                        <Scatter shape={<BigBubble />} width={200} height={200} strokeWidth={200} data={filteredData} fill="#8884d8" />
-                        {/* <Scatter name="B school" data={data02} fill="#82ca9d" /> */}
-                    </ScatterChart>
-                    <div style={{width: '100%'}}>
-                        <YearSlider onChange={this.onSliderChange} min={1} max={data.length}/>
-                    </div>
+                <ScatterChart
+                    width={850}
+                    height={400}
+                    margin={{
+                        // top: 20,
+                        right: 30,
+                        // bottom: 10,
+                        // left: 20
+                    }}
+                >
+                    <CartesianGrid vertical={false}  />
+                    <XAxis dataKey="Start date" name="Date" unit="" />
+                    <YAxis dataKey="Participants" name="Participants" unit="" />
+                    <ZAxis dataKey="Teams alive at 6m" range={[0, 100]} name="Teams alive at 6m" unit="" />
+                    <Tooltip active={true} cursor={{ strokeDasharray: '3 3' }} />
+                    <Legend />
+                    <Scatter shape={<BigBubble onClick={this.onBigBubbleClick} activeElement={this.state.activeEvent} isActive={isActive}/>} width={200} height={200} strokeWidth={200} data={filteredData} fill="#8884d8" />
+                    {/* <Scatter name="B school" data={data02} fill="#82ca9d" /> */}
+                </ScatterChart>
+                <div style={{width: '80%', marginTop: '40px'}}>
+                    <YearSlider onChange={this.onSliderChange} min={1} max={dataLength}/>
+                </div>
             </React.Fragment>
         );
     }
